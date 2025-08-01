@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rayhan Islam - CSE Student Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          primary:'#0EA5E9',
+          secondary:'#64748b'
+        },
+        borderRadius: {
+          'none':'0px',
+          'sm':'4px',
+          DEFAULT:'8px',
+          'md':'12px',
+          'lg':'16px',
+          'xl':'20px',
+          '2xl':'24px',
+          '3xl':'32px',
+          'full':'9999px',
+          'button':'8px'
+        }
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+  /* --- Added Hacker-Style Glitch Effect --- */
+  @keyframes glitch {
+      0% { transform: skew(0deg); }
+      25% { transform: skew(-0.5deg); text-shadow: 1px 1px #ff0000, -1px -1px #00ff00; }
+      50% { transform: skew(0.5deg); text-shadow: 1px 1px #00ff00, -1px -1px #ff0000; }
+      75% { transform: skew(-0.5deg); text-shadow: 1px 1px #0000ff, -1px -1px #ff0000; }
+      100% { transform: skew(0deg); }
+  }
+
+  .glitch {
+      animation: glitch 1.5s linear infinite;
+  }
+
+  :where([class^="ri-"])::before {
+  content: "\f3c2";
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  .skill-progress {
+    transition: width 0.8s ease-in-out;
+  }
+
+  /* --- Added Pop Animation --- */
+  .pop-on-hover {
+    transition: transform 0.2s ease-in-out;
+  }
+  .pop-on-hover:hover {
+    transform: scale(1.05);
+  }
+
+  /* --- New Colouring Animation Effect --- */
+  @keyframes pulse-color {
+      0% { color: #0EA5E9; } /* sky blue */
+      50% { color: #000000; } /* black */
+      100% { color: #0EA5E9; } /* sky blue */
+  }
+  .pulse-color {
+      animation: pulse-color 3s infinite ease-in-out;
+  }
+
+  /* --- Old Colouring Animation Effect --- */
+  @keyframes color-shift {
+      0% { color: #FF0000; } /* Red */
+      16% { color: #FF7F00; } /* Orange */
+      33% { color: #FFFF00; } /* Yellow */
+      50% { color: #00FF00; } /* Green */
+      66% { color: #0000FF; } /* Blue */
+      83% { color: #4B0082; } /* Indigo */
+      100% { color: #9400D3; } /* Violet */
+  }
+  .color-shift {
+      animation: color-shift 5s infinite;
+  }
+
+  /* --- New: Animation for Profile Photo --- */
+  @keyframes neon-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px #0EA5E9, 0 0 10px #0EA5E9, 0 0 20px #0EA5E9, 0 0 40px #0EA5E9 inset;
+    }
+    50% {
+      box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8, 0 0 30px #38bdf8, 0 0 50px #38bdf8 inset;
+    }
+  }
+
+  .profile-photo-container {
+      position: relative;
+      border-radius: 1.5rem; /* Matches the rounded-2xl class */
+      overflow: hidden;
+      animation: neon-glow 2s infinite ease-in-out alternate;
+  }
+
+</style>
+</head>
+<body class="bg-white dark:bg-gray-900 transition-colors">
+  <header class="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50">
+    <div class="absolute right-6 top-1/2 -translate-y-1/2">
+      <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+        <i class="ri-sun-line dark:hidden"></i>
+        <i class="ri-moon-line hidden dark:block text-white"></i>
+      </button>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Rayhan Islam</h1>
+          <p class="text-sm text-secondary dark:text-gray-400">CSE Student at University of Asia Pacific</p>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+          <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">About</a>
+          <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">Skills</a>
+          <a href="#achievements" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">Achievements</a>
+          <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors">Contact</a>
+        </nav>
+        <button class="md:hidden w-8 h-8 flex items-center justify-center">
+          <i class="ri-menu-line text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  <section id="hero" class="bg-white dark:bg-gray-900 py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 items-center gap-16">
+        <div class="text-center lg:text-left">
+          <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-8">
+            Hi, I'm <span class="text-primary glitch" id="typed-text"></span>
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">
+            A passionate Computer Science Engineering student at the University of Asia Pacific, with a focus on cybersecurity, networking, and competitive CTF challenges. Enthusiastic about solving complex security puzzles and exploring advanced concepts in digital forensics.
+          </p>
+          <div class="flex gap-4 mt-8 justify-center lg:justify-start">
+            <a href="https://github.com/rayhanislam2004" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-primary hover:text-white transition-colors rounded-full">
+              <i class="ri-github-line"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/rayhan-islam-0305a723b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-primary hover:text-white transition-colors rounded-full">
+              <i class="ri-linkedin-line"></i>
+            </a>
+            <a href="https://x.com/Rayhanislam2004" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-primary hover:text-white transition-colors rounded-full">
+              <svg class="h-5 w-5" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42.7L364.4 421.8z"/></svg>
+            </a>
+            <a href="mailto:23101081@uap-bd.edu" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-primary hover:text-white transition-colors rounded-full">
+              <i class="ri-mail-line"></i>
+            </a>
+          </div>
+        </div>
+        <div class="max-w-md mx-auto md:col-span-2 lg:col-span-1">
+          <div class="profile-photo-container">
+            <div class="relative">
+              <img src="https://static.readdy.ai/image/d8e32b6078960df3bc8c4422d7d820a0/ab31be2e1587609cbf15eed938c0fff3.jfif"
+                alt="Rayhan Islam" class="w-full h-auto rounded-2xl shadow-lg object-cover object-top">
+              <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-lg">
+                <div class="w-6 h-6 flex items-center justify-center">
+                  <i class="ri-shield-check-line text-primary text-xl"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="about" class="py-32 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">About Me</h3>
+        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Discover my journey in computer science and cybersecurity
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h4 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">My Story</h4>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+            I'm a dedicated Computer Science Engineering student at the University of 
+            Asia Pacific, driven by a passion for cybersecurity and ethical hacking. My 
+            journey began with curiosity about how systems work and evolved into a 
+            deep fascination with protecting them.
+          </p>
+          <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+            Through CTF competitions, I've honed my skills in various domains including 
+            web exploitation, cryptography, reverse engineering, and forensics. These 
+            challenges have not only improved my technical abilities but also taught me 
+            to think creatively and approach problems from multiple angles.
+          </p>
+          <p class="text-lg text-gray-600 dark:text-gray-300">
+            When I'm not studying or competing, I enjoy contributing to open-source 
+            projects and sharing knowledge with the cybersecurity community.
+          </p>
+        </div>
+        <div class="bg-gray-100 dark:bg-gray-700 p-8 rounded-2xl shadow-lg">
+          <h4 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Quick Facts</h4>
+          <ul class="space-y-6">
+            <li class="flex items-start gap-4">
+              <i class="ri-graduation-cap-line text-2xl text-primary mt-1"></i>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">Education</p>
+                <p class="text-gray-600 dark:text-gray-300">University of Asia Pacific</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <i class="ri-code-s-slash-line text-2xl text-primary mt-1"></i>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">Field</p>
+                <p class="text-gray-600 dark:text-gray-300">Computer Science & Engineering</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <i class="ri-map-pin-line text-2xl text-primary mt-1"></i>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">Location</p>
+                <p class="text-gray-600 dark:text-gray-300">Dhaka, Bangladesh</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4">
+              <i class="ri-bug-line text-2xl text-primary mt-1"></i>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">Current Focus</p>
+                <p class="text-gray-600 dark:text-gray-300">CTF Competitions & Cybersecurity</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="skills" class="bg-white dark:bg-gray-900 py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Skills & Expertise</h3>
+        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          A comprehensive overview of my cybersecurity skills and technical expertise
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl">
+          <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-xl mb-6">
+            <i class="ri-shield-keyhole-line text-xl"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Cryptography</h4>
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm text-gray-600 dark:text-gray-300">Proficiency</span>
+              <span class="text-sm text-gray-600 dark:text-gray-300">45%</span>
+            </div>
+            <div class="bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div class="bg-blue-500 h-2 rounded-full transition-all duration-500" style="width: 45%"></div>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Learning about secure communication, data encryption, and digital signatures.</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl">
+          <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-xl mb-6">
+            <i class="ri-search-eye-line text-xl"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Digital Forensics</h4>
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm text-gray-600 dark:text-gray-300">Proficiency</span>
+              <span class="text-sm text-gray-600 dark:text-gray-300">40%</span>
+            </div>
+            <div class="bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div class="bg-blue-500 h-2 rounded-full transition-all duration-500" style="width: 40%"></div>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Beginning to learn evidence collection and malware analysis</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl">
+          <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-xl mb-6">
+            <i class="ri-code-box-line text-xl"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Web Security</h4>
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm text-gray-600 dark:text-gray-300">Proficiency</span>
+              <span class="text-sm text-gray-600 dark:text-gray-300">55%</span>
+            </div>
+            <div class="bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div class="bg-blue-500 h-2 rounded-full transition-all duration-500" style="width: 55%"></div>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Learning OWASP Top 10 and secure coding practices</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl">
+          <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-xl mb-6">
+            <i class="ri-terminal-box-line text-xl"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Linux & Scripting</h4>
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm text-gray-600 dark:text-gray-300">Proficiency</span>
+              <span class="text-sm text-gray-600 dark:text-gray-300">60%</span>
+            </div>
+            <div class="bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div class="bg-blue-500 h-2 rounded-full transition-all duration-500" style="width: 60%"></div>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Basic Linux administration and automation scripting</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl">
+          <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-xl mb-6">
+            <i class="ri-bug-line text-xl"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Reverse Engineering</h4>
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm text-gray-600 dark:text-gray-300">Proficiency</span>
+              <span class="text-sm text-gray-600 dark:text-gray-300">45%</span>
+            </div>
+            <div class="bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div class="bg-blue-500 h-2 rounded-full transition-all duration-500" style="width: 45%"></div>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Starting to learn binary analysis and reverse engineering</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-xl">
+          <div class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 rounded-xl mb-6">
+            <i class="ri-wifi-line text-xl"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Network Security</h4>
+          <div class="mb-4">
+            <div class="flex justify-between mb-1">
+              <span class="text-sm text-gray-600 dark:text-gray-300">Proficiency</span>
+              <span class="text-sm text-gray-600 dark:text-gray-300">50%</span>
+            </div>
+            <div class="bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div class="bg-blue-500 h-2 rounded-full transition-all duration-500" style="width: 50%"></div>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">Learning network protocols and wireless security basics</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="achievements" class="py-32 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Achievement Highlights</h3>
+        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Notable achievements in CTF competitions and cybersecurity challenges
+        </p>
+      </div>
+      <div class="space-y-8">
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+          <img src="https://static.readdy.ai/image/d8e32b6078960df3bc8c4422d7d820a0/7c54e17d22c9cc2750ec4c99b06d379e.jfif"
+            alt="Intra-University CTF Contest Certificate"
+            class="w-full h-auto object-cover">
+          <div class="p-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+              <div>
+                <h4 class="text-2xl font-semibold text-gray-900 dark:text-white">Intra-University CTF Contest 3.0</h4>
+                <p class="text-secondary dark:text-gray-400">University of Asia Pacific</p>
+              </div>
+              <span class="text-sm text-gray-500 dark:text-gray-400 mt-2 md:mt-0">March 25, 2025</span>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              Successfully participated in the third edition of the Intra-University CTF Contest, demonstrating advanced cybersecurity skills and problem-solving abilities. The competition provided an excellent platform to showcase technical expertise in various security domains.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-4 py-2 rounded-full text-sm">Problem Solving</span>
+              <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 px-4 py-2 rounded-full text-sm">Cybersecurity</span>
+              <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 px-4 py-2 rounded-full text-sm">Technical Skills</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+          <img src="https://static.readdy.ai/image/d8e32b6078960df3bc8c4422d7d820a0/a5652620ece1f980877532724a04c7da.png"
+            alt="BCS ICT FEST 2025 Certificate"
+            class="w-full h-auto object-cover">
+          <div class="p-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+              <div>
+                <h4 class="text-2xl font-semibold text-gray-900 dark:text-white">BCS ICT FEST 2025 – CTF Contest</h4>
+                <p class="text-secondary dark:text-gray-400">Bangladesh Computer Society</p>
+              </div>
+              <span class="text-sm text-gray-500 dark:text-gray-400 mt-2 md:mt-0">February 15, 2025</span>
+            </div>
+            <p class="text-gray-600 dark:text-gray-300 mb-6">
+              Participated in the CTF category of the BCS ICT FEST 2025, demonstrating skills in cybersecurity and innovative ICT solutions. The event provided a platform to showcase technical expertise and problem-solving capabilities in Information and Communication Technology.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-4 py-2 rounded-full text-sm">Cybersecurity</span>
+              <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 px-4 py-2 rounded-full text-sm">ICT Innovation</span>
+              <span class="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-100 px-4 py-2 rounded-full text-sm">Technical Excellence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contact" class="bg-white dark:bg-gray-900 py-32">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 pulse-color">Let's Connect</h3>
+        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          I'm always open to discussing new opportunities, collaborations, or just having a chat about technology and cybersecurity.
+        </p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div>
+          <h4 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 pop-on-hover pulse-color">Contact</h4>
+          <div class="space-y-4 mb-8">
+            <a href="mailto:23101081@uap-bd.edu" class="flex items-center gap-4">
+              <div class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full">
+                <i class="ri-mail-line"></i>
+              </div>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">Email</p>
+                <p class="text-gray-600 dark:text-gray-300">23101081@uap-bd.edu</p>
+              </div>
+            </a>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full">
+                <i class="ri-phone-line"></i>
+              </div>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">Phone</p>
+                <p class="text-gray-600 dark:text-gray-300">+8801904929866</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full">
+                <i class="ri-map-pin-line"></i>
+              </div>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">Location</p>
+                <p class="text-gray-600 dark:text-gray-300">Dhaka, Bangladesh</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <a href="https://github.com/rayhanislam2004" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-primary hover:text-white transition-colors rounded-full">
+              <i class="ri-github-line"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/rayhan-islam-0305a723b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-primary hover:text-white transition-colors rounded-full">
+              <i class="ri-linkedin-line"></i>
+            </a>
+            <a href="https://x.com/Rayhanislam2004" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-primary hover:text-white transition-colors rounded-full">
+              <svg class="h-5 w-5" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42.7L364.4 421.8z"/></svg>
+            </a>
+            <a href="mailto:23101081@uap-bd.edu" class="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-primary hover:text-white transition-colors rounded-full">
+              <i class="ri-mail-line"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-white dark:bg-gray-900 border-t dark:border-gray-800 py-8">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-gray-600 dark:text-gray-300">© 2025 Rayhan Islam. All rights reserved.</p>
+        </div>
+        <div class="flex gap-6">
+          <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">About</a>
+          <a href="#skills" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Skills</a>
+          <a href="#achievements" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Achievements</a>
+          <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script id="theme-toggle-handler">
+    document.addEventListener('DOMContentLoaded', function() {
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      // Check for saved theme preference or default to dark
+      if (localStorage.getItem('theme') === 'dark' || 
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+      // Toggle theme
+      themeToggleBtn.addEventListener('click', function() {
+        document.documentElement.classList.toggle('dark');
+        // Save preference
+        if (document.documentElement.classList.contains('dark')) {
+          localStorage.setItem('theme', 'dark');
+        } else {
+          localStorage.setItem('theme', 'light');
+        }
+      });
+    });
+  </script>
+  <script id="mobile-menu">
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.querySelector('button.md\\:hidden');
+      const nav = document.querySelector('nav');
+      if (mobileMenuButton && nav) {
+        mobileMenuButton.addEventListener('click', function() {
+          nav.classList.toggle('hidden');
+          nav.classList.toggle('flex');
+          nav.classList.toggle('flex-col');
+          nav.classList.toggle('absolute');
+          nav.classList.toggle('top-full');
+          nav.classList.toggle('left-0');
+          nav.classList.toggle('right-0');
+          nav.classList.toggle('bg-white');
+          nav.classList.toggle('shadow-lg');
+          nav.classList.toggle('p-4');
+        });
+      }
+    });
+  </script>
+  <script id="smooth-scroll">
+    document.addEventListener('DOMContentLoaded', function() {
+      const links = document.querySelectorAll('a[href^="#"]');
+      links.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const targetPosition = targetSection.offsetTop - headerHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+  <script id="form-handler">
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const submitButton = form.querySelector('button[type="submit"]');
+          const originalText = submitButton.textContent;
+          submitButton.textContent = 'Sending...';
+          submitButton.disabled = true;
+          setTimeout(() => {
+            submitButton.textContent = 'Message Sent!';
+            submitButton.classList.add('bg-green-600');
+            submitButton.classList.remove('bg-primary');
+            setTimeout(() => {
+              submitButton.textContent = originalText;
+              submitButton.disabled = false;
+              submitButton.classList.remove('bg-green-600');
+              submitButton.classList.add('bg-primary');
+              form.reset();
+            }, 2000);
+          }, 1000);
+        });
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var options = {
+            strings: ["Rayhan", "a Cybersecurity Enthusiast", "a CTF Player", "Rayhan"],
+            typeSpeed: 80,
+            backSpeed: 50,
+            loop: false,
+            cursorChar: '_',
+        };
+
+        var typed = new Typed('#typed-text', options);
+    });
+  </script>
+</body>
+</html>
